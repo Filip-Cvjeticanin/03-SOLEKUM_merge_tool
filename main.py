@@ -52,12 +52,16 @@ with open(energyPath, "r") as file:
 
         if currentHour != hour:
             currentHour = hour
-            tableRow += 1
+
+            if tableRow != -1:  # Skip first time
+                table[tableRow][2] += energy # Add energy to last hour
+
+            tableRow += 1   # Add a new row.
             table.append(list())
 
-            table[tableRow].append(date)
+            table[tableRow].append(date)    # Fill new row with empty data.
             table[tableRow].append(hour + 1)
-            table[tableRow].append(energy)
+            table[tableRow].append(0)
         else:
             table[tableRow][2] += energy
 table.pop()
