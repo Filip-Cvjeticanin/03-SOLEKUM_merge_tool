@@ -1,4 +1,4 @@
-; SOLEKUM-merger Installer Script
+; SOLEKUM-merger Installer Script (Console Tool)
 
 [Setup]
 AppName=SOLEKUM-merger
@@ -16,10 +16,11 @@ ArchitecturesInstallIn64BitMode=x64
 Source: "dist\SOLEKUM-merger\*"; DestDir: "{app}"; Flags: recursesubdirs
 
 [Icons]
+; Optional: Start Menu shortcut (not desktop)
 Name: "{group}\SOLEKUM-merger"; Filename: "{app}\SOLEKUM-merger.exe"
 
 [Registry]
-; Add install folder to system PATH
+; Add install folder to system PATH (machine-wide)
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
     ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"; \
     Flags: preservestringtype uninsdeletevalue
